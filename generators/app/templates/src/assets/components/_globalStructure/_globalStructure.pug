@@ -1,0 +1,133 @@
+//-@description Genera un contenedor
+//-Se ha de utilizar en conjunto con mod-content__header, mod-content__title y mod-content__body
+//-@param params                        Parámetros que acepta
+//-@param [params.type=div]             Indica el tipo de elemento a utilizar. Puede ser "article" "section" o "div"
+//-@param [params.cssClass]             Clases css a añadir al elemento
+//-@param [params.attributes]           Atributos a añadir al HTML
+//-@example
+//- mod-section({type:"article"})
+        mod-section__header
+            mod-section__title({content:"Titulo"})
+        mod-section__body
+            p Contenido de la sección
+mixin _mod-baseContent(params)
+    -params.externalParams= params.externalParams || {};
+    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
+    if(params.externalParams.type == "article")
+        article(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+            block
+    else if(params.externalParams.type == "section")
+        section(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+            block
+    else if(params.externalParams.type == "fieldset")
+        fieldset(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+            block
+    else
+        div(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+            block
+//-@description Genera la cabecera de un contenido
+//-@param params                        Parámetros que acepta
+//-@param [params.type=div]             Indica el tipo de elemento a utilizar. Puede ser "header" o "div"
+//-@param [params.cssClass]             Clases css a añadir al elemento
+//-@param [params.attributes]           Atributos a añadir al HTML
+mixin _mod-baseContent__header(params)
+    -params.externalParams= params.externalParams || {};
+    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
+    if(params.externalParams.type == "header")
+        header(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+            block
+    else if(params.externalParams.type == "legend")
+        legend(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+            block
+    else
+        div(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+            block
+//-@description Genera el título de un contenido
+//-@param params                    Parámetros que acepta
+//-@param [params.level]            Nivel de encabezado a utilizar. Si se indica del 1-6 se genera un encabezado h(x). En caso de no indicar nivel se genera un p
+//-@param [params.content]          Contenido textual. Es posible indicar el contenido mediante block
+//-@param [params.cssClass]         Clases css a añadir al elemento
+//-@param [params.attributes]       Atributos a añadir al HTML
+//-@example
+//- mod-content({type:"article"})
+        mod-content__header({type:"header"})
+            mod-content__title({level:3,content:"Titulo"})
+//-@example
+//- mod-content({type:"article"})
+        mod-content__header({type:"header"})
+            mod-content__title({level:3})
+                span Titulo
+                span Compuesto
+mixin _mod-baseContent__title(params)
+    -params.externalParams= params.externalParams || {};
+    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
+    case params.externalParams.level
+        when 1
+            if(params.externalParams.content)
+                h1(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
+            else
+                h1(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+        when 2
+            if(params.externalParams.content)
+                h2(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
+            else
+                h2(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+        when 3
+            if(!!params.externalParams.content)
+                h3(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
+            else
+                h3(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+        when 4
+            if(params.externalParams.content)
+                h4(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
+            else
+                h4(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+        when 5
+            if(params.content)
+                h5(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.content
+            else
+                h5(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+        when 6
+            if(params.externalParams.content)
+                h6(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
+            else
+                h6(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+        when "span"
+            if(params.externalParams.content)
+                span(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
+            else
+                span(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+        default
+            if(params.externalParams.content)
+                p(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
+            else
+                p(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+                    block
+
+//-@description Genera el wrapper del cuerpo del contenido
+//-@param params                    Parámetros que acepta
+//-@param [params.cssClass]         Clases css a añadir al elemento
+//-@param [params.attributes]       Atributos a añadir al HTML
+mixin _mod-baseContent__body(params)
+    -params = params || {};
+    -params.externalParams= params.externalParams || {};
+    -params.internalParams= params.internalParams || {};
+    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
+    case (params.externalParams.type)
+        when "p"
+            p(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!=params.internalParams.content
+            block
+        when "span"
+            span(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!=params.internalParams.content
+            block
+        when "div"
+        default
+            div(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!=params.internalParams.content
+            block
