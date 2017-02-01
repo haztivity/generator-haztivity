@@ -12,19 +12,10 @@
             p Contenido de la sección
 mixin _mod-baseContent(params)
     -params.externalParams= params.externalParams || {};
-    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
-    if(params.externalParams.type == "article")
-        article(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-            block
-    else if(params.externalParams.type == "section")
-        section(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-            block
-    else if(params.externalParams.type == "fieldset")
-        fieldset(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-            block
-    else
-        div(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-            block
+    -params.externalParams.tag = params.externalParams.tag || "div";
+    +_mod-baseContent__tag(params)&attributes(attributes)
+        block
+
 //-@description Genera la cabecera de un contenido
 //-@param params                        Parámetros que acepta
 //-@param [params.type=div]             Indica el tipo de elemento a utilizar. Puede ser "header" o "div"
@@ -32,16 +23,9 @@ mixin _mod-baseContent(params)
 //-@param [params.attributes]           Atributos a añadir al HTML
 mixin _mod-baseContent__header(params)
     -params.externalParams= params.externalParams || {};
-    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
-    if(params.externalParams.type == "header")
-        header(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-            block
-    else if(params.externalParams.type == "legend")
-        legend(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-            block
-    else
-        div(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-            block
+    -params.externalParams.tag = params.externalParams.tag || "header";
+    +_mod-baseContent__tag(params)&attributes(attributes)
+        block
 //-@description Genera el título de un contenido
 //-@param params                    Parámetros que acepta
 //-@param [params.level]            Nivel de encabezado a utilizar. Si se indica del 1-6 se genera un encabezado h(x). En caso de no indicar nivel se genera un p
@@ -60,74 +44,50 @@ mixin _mod-baseContent__header(params)
                 span Compuesto
 mixin _mod-baseContent__title(params)
     -params.externalParams= params.externalParams || {};
-    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
-    case params.externalParams.level
-        when 1
-            if(params.externalParams.content)
-                h1(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
-            else
-                h1(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
+    if(params.externalParams.tag == undefined)
+        case params.externalParams.level
+            when 1
+            when 2
+            when 3
+            when 4
+            when 5
+            when 6
+                -params.externalParams.tag="h"+params.externalParams.level;
+            default
+                -params.externalParams.tag="div";
                     block
-        when 2
-            if(params.externalParams.content)
-                h2(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
-            else
-                h2(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-                    block
-        when 3
-            if(!!params.externalParams.content)
-                h3(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
-            else
-                h3(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-                    block
-        when 4
-            if(params.externalParams.content)
-                h4(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
-            else
-                h4(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-                    block
-        when 5
-            if(params.content)
-                h5(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.content
-            else
-                h5(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-                    block
-        when 6
-            if(params.externalParams.content)
-                h6(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
-            else
-                h6(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-                    block
-        when "span"
-            if(params.externalParams.content)
-                span(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
-            else
-                span(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-                    block
-        default
-            if(params.externalParams.content)
-                p(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!= params.externalParams.content
-            else
-                p(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)
-                    block
+    +_mod-baseContent__tag(params)&attributes(attributes)
+        block
 
-//-@description Genera el wrapper del cuerpo del contenido
+//-@description Genera un boton o enlace
 //-@param params                    Parámetros que acepta
 //-@param [params.cssClass]         Clases css a añadir al elemento
 //-@param [params.attributes]       Atributos a añadir al HTML
-mixin _mod-baseContent__body(params)
+mixin _mod-baseContent__action(params)
     -params = params || {};
     -params.externalParams= params.externalParams || {};
     -params.internalParams= params.internalParams || {};
-    -var css = params.internalParams.cssClass + (params.externalParams.cssClass != undefined ? " "+params.externalParams.cssClass : "");
-    case (params.externalParams.type)
-        when "p"
-            p(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!=params.internalParams.content
-            block
-        when "span"
-            span(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!=params.internalParams.content
-            block
-        when "div"
+    case (params.externalParams.tag)
+        when "link"
+            a(id=params.externalParams.id class=params.internalParams.cssClass href=params.internalParams.href)(class=params.externalParams.cssClass)&attributes(attributes)&attributes(params.internalParams.attributes)&attributes(params.externalParams.attributes)!=params.externalParams.content
+                block
         default
-            div(id=params.externalParams.id class=css)&attributes(params.externalParams.attributes)!=params.internalParams.content
-            block
+            button(id=params.externalParams.id class=params.internalParams.cssClass)(class=params.externalParams.cssClass)&attributes(attributes)&attributes(params.internalParams.attributes)&attributes(params.externalParams.attributes)!=params.externalParams.content
+                block
+
+mixin mod-baseContent__element(params)
+    -params = params || {};
+    -params.tag = params.tag || "div";
+    +_mod-baseContent__tag({
+        externalParams:params
+    })&attributes(attributes)
+        block
+
+mixin _mod-baseContent__tag(params)
+    -params = params || {};
+    -params.externalParams= params.externalParams || {};
+    -params.internalParams= params.internalParams || {};
+    -params.internalParams.ignoreContent = params.internalParams.ignoreContent == undefined ?  true : params.internalParams.ignoreContent;
+    -params.externalParams.tag = params.externalParams.tag || "div";
+    #{params.externalParams.tag}(id=params.externalParams.id class=params.internalParams.cssClass)(class=params.externalParams.cssClass)&attributes(attributes)&attributes(params.internalParams.attributes)&attributes(params.externalParams.attributes)!= params.internalParams.ignoreContent != true ? params.externalParams.content : ""
+        block

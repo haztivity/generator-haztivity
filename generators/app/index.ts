@@ -10,7 +10,7 @@ import * as yosay from "yosay";
 module.exports = class extends Generator {
     constructor(args, opts) {
         super(args, opts);
-        this.destinationRoot('test/')
+        this.destinationRoot('/')
     }
 
     initializing() {
