@@ -1,0 +1,19 @@
+/*********************************************
+** Project: <%= courseName %>
+** File:  common.scss
+** Description:
+**********************************************/
+/*Common*/
+@import "./config";
+body {
+    min-height: 100vh;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+/* Common components */
+@import "../components/viewer/_viewer";
+/* End common components */
+/*End common*/
