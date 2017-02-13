@@ -13,7 +13,10 @@ npm install -g generator-haztivity
 Then generate your new project:
 
 ```bash
-yo haztivity
+yo haztivity                   To create a full project
+yo haztivity:environment       To create the course structure
+yo haztivity:sco               To create a sco
+yo haztivity:page              To create a page
 ```
 
 ## Getting To Know Yeoman
