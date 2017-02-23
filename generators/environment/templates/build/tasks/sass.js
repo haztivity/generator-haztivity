@@ -6,6 +6,7 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const debug = require("gulp-debug");
 const path = require("path");
+const sassJspm = require('sass-jspm-importer');
 const config = require("./../config");
 class SassTask extends BaseTask {
     _compile(files) {
@@ -13,7 +14,14 @@ class SassTask extends BaseTask {
         return gulp.src(files)
             .pipe(debug())
             .pipe(this.sourcemaps.init())
-            .pipe(this.sass({outputStyle: "expanded"}).on('error', this.sass.logError))
+            .pipe(this.sass(
+                {
+                    outputStyle: "expanded",
+                    errLogToConsole: true,
+                    functions: sassJspm.resolve_function('./src/jspm_packages'),
+                    importer: sassJspm.importer
+                }
+            ).on('error', this.sass.logError))
             .pipe(this.sourcemaps.write())
             .pipe(this.gulp.dest(this.gulpConfig.src));
     }

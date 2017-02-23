@@ -9,7 +9,7 @@ let config = require("./../config");
 //client
 (function () {
     let tsProject = ts.createProject(path.resolve(config.src, "tsconfig.json"));
-    let tsFiles = path.resolve(config.src, "**/*.ts");
+    let tsFiles = [path.join(config.src, "**/*.ts"),path.join(config.src,"!src/jspm_packages/**/*.ts")];
     gulp.task("typescript:build", function () {
         let tsresult = gulp.src(tsFiles)
             .pipe(tsProject());

@@ -28,7 +28,10 @@ class PugTask extends BaseTask {
 let pugTask = new PugTask({
     gulpConfig: config,
     taskConfig: {
-        files: "**/*.pug"
+        files: "**/*.pug",
+        exclude: config.pug
+            ? config.pug.exclude
+            : null
     },
     gulp: gulp,
     debug: debug,

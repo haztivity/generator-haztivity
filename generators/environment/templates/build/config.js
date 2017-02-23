@@ -5,7 +5,13 @@ let config = {
     src: process.cwd() + "/src",
     dist: process.cwd() + "/dist",
     sass: {
-        exclude: ["bower_components/**/*.scss"]
+        exclude: ["bower_components/**/*.scss","jspm_packages/**/*.scss"]
+    },
+    typescript:{
+        exclude: ["jspm_packages/**/*.ts"]
+    },
+    pug:{
+        exclude:["jspm_packages/**/*.pug"]
     },
     production: program.production,
     bowerAssets: [],

@@ -47,7 +47,7 @@ module.exports = class EnvironmentGenerator extends BaseGenerator_1.BaseGenerato
     }
     writing() {
         this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath('package.json'), this.data);
-        this.fs.copy(this.templatePath('_config.js'), this.destinationPath('config.js'));
+        this.fs.copy(this.templatePath('src/_config.js'), this.destinationPath('src/config.js'));
         this.fs.copy(this.templatePath('_gulpfile.js'), this.destinationPath('gulpfile.js'));
         this.fs.copy(this.templatePath('./build/**'), this.destinationPath('./build'));
         this.fs.copy(this.templatePath('./src/_tsconfig.json'), this.destinationPath('./src/tsconfig.json'));
@@ -55,15 +55,15 @@ module.exports = class EnvironmentGenerator extends BaseGenerator_1.BaseGenerato
         this.fs.copyTpl(this.templatePath('./src/course'), this.destinationPath('./src/course'), this.data);
     }
     install() {
-        //this.log(`---- Installing ${chalk.cyan("NPM")} dependencies ----`);
-        //this.spawnCommandSync("npm",["install"]);
-        //this.log(`---- ${chalk.cyan("NPM")} dependencies installed ----`);
-        //this.log(`---- Initializing ${chalk.cyan("JSPM")} ----`);
-        //this.spawnCommandSync('jspm', ['init']);
-        //this.log(`---- ${chalk.cyan("JSPM")} initialized ----`);
-        //this.log(`---- Installing ${chalk.cyan("JSPM")} dependencies ----`);
-        //this.spawnCommandSync('jspm', ['install']);
-        //this.log(`---- ${chalk.cyan("JSPM")} dependencies installed ----`);
+        this.log(`---- Installing ${chalk.cyan("NPM")} dependencies ----`);
+        this.spawnCommandSync("npm", ["install"]);
+        this.log(`---- ${chalk.cyan("NPM")} dependencies installed ----`);
+        this.log(`---- Initializing ${chalk.cyan("JSPM")} ----`);
+        this.spawnCommandSync('jspm', ['init']);
+        this.log(`---- ${chalk.cyan("JSPM")} initialized ----`);
+        this.log(`---- Installing ${chalk.cyan("JSPM")} dependencies ----`);
+        this.spawnCommandSync('jspm', ['install']);
+        this.log(`---- ${chalk.cyan("JSPM")} dependencies installed ----`);
     }
     end() {
         this._end();

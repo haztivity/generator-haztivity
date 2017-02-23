@@ -85,15 +85,15 @@ module.exports = (_a = class PageGenerator extends BaseGenerator_1.BaseGenerator
             this.fs.copyTpl(this.templatePath('**'), this.destinationPath(this._resolvePageDir(this.data.pageName)), this.data);
         }
         install() {
-            //this.log(`---- Installing ${chalk.cyan("NPM")} dependencies ----`);
-            //this.spawnCommandSync("npm",["install"]);
-            //this.log(`---- ${chalk.cyan("NPM")} dependencies installed ----`);
-            //this.log(`---- Initializing ${chalk.cyan("JSPM")} ----`);
-            //this.spawnCommandSync('jspm', ['init']);
-            //this.log(`---- ${chalk.cyan("JSPM")} initialized ----`);
-            //this.log(`---- Installing ${chalk.cyan("JSPM")} dependencies ----`);
-            //this.spawnCommandSync('jspm', ['install']);
-            //this.log(`---- ${chalk.cyan("JSPM")} dependencies installed ----`);
+            this.log(`---- Installing ${chalk.cyan("NPM")} dependencies ----`);
+            this.spawnCommandSync("npm", ["install"]);
+            this.log(`---- ${chalk.cyan("NPM")} dependencies installed ----`);
+            this.log(`---- Initializing ${chalk.cyan("JSPM")} ----`);
+            this.spawnCommandSync('jspm', ['init']);
+            this.log(`---- ${chalk.cyan("JSPM")} initialized ----`);
+            this.log(`---- Installing ${chalk.cyan("JSPM")} dependencies ----`);
+            this.spawnCommandSync('jspm', ['install']);
+            this.log(`---- ${chalk.cyan("JSPM")} dependencies installed ----`);
         }
         end() {
             this._end();

@@ -5,11 +5,10 @@ html(lang='es')
         meta(charset='UTF-8')
         meta(http-equiv="X-UA-Compatible" content="IE=Edge")
         title Title
-        link(type="text/css" rel="stylesheet" href="./main.css")
-        script(src='../../../jspm_packages/system.js')
-        script(src='../../../config.js')
-        script.
-            SystemJS.import("./index.js");
+        script(src='../../jspm_packages/system.js')
+        script(src='../../config.js')
     body
         main.mod-viewer(data-hz-app)
             div(data-hz-pages)
+        script.
+            SystemJS.import("./index.js");

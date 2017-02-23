@@ -1,11 +1,9 @@
 {
     "compilerOptions": {
-        "declaration": true,
         "experimentalDecorators": true,
-        "module": "system",
+        "module": "umd",
         "moduleResolution": "node",
         "sourceMap": true,
-        "inlineSourceMap": true,
         "target": "es5",
         "typeRoots": [
             "../node_modules/@types"
