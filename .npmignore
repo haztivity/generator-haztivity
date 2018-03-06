@@ -1,3 +1,4 @@
+# Created by .ignore support plugin (hsz.mobi)
 .editorconfig
 .jshintrc
 .travis.yml
@@ -10,3 +11,4 @@ coverage/
 **/templates/*.js
 node_modules
 .gitattributes
+tsconfig.json
