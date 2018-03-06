@@ -8,6 +8,7 @@ require("./main.scss");
 const core_1 = require("@haztivity/core");
 const sco_pug_1 = require("./sco.pug");
 const hz_navbar_1 = require("@haztivity/hz-navbar");
+//hz-generator:imports - Leave this comment for auto imports when using generators
 let sco = core_1.ScoFactory.createSco({
     name: "<%= scoName %>",
     template: sco_pug_1.default,
