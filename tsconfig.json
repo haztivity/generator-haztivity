@@ -6,8 +6,8 @@
     },
     "exclude": [
         "node_modules",
-        "page/templates",
-        "sco/templates",
-        "course/templates"
+        "generators/course/templates",
+        "generators/sco/templates",
+        "generators/page/templates"
     ]
 }
