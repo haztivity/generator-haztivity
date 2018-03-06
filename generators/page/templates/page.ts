@@ -2,9 +2,9 @@
  * @license
  * Copyright Davinchi. All Rights Reserved.
  */
-import {PageFactory, PageRegister, PageController} from "@haztivity/core/index";
-import * as template from "./page.html!text";
-import "./page.css!";
+import * as template from "./page.pug";
+import "./page.scss";
+import {PageFactory, PageRegister, PageController} from "@haztivity/core";
 export let page: PageRegister = PageFactory.createPage(
     {
         name: "<%= pageName %>",

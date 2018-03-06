@@ -1,0 +1,19 @@
+{
+    "name": "<%= courseName %>",
+    "version": "0.1.0",
+    "description": "<%= courseDescription %>",
+    "author": "<%= courseAuthor %>",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+      "@haztivity/cli": "^0.x",
+      "@types/jquery": "^3",
+      "pug": "latest",
+      "typescript": "^2"
+    },
+    "dependencies": {
+      "@haztivity/core": "^0.x",
+      "@haztivity/hz-navbar": "^0.x"
+    }
+}

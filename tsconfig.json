@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules",
+        "page/templates",
+        "sco/templates",
+        "course/templates"
+    ]
+}

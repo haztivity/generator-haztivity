@@ -1,11 +1,8 @@
-/*********************************************
-** Project: <%= courseName %>
-** File:  main.scss
-** Description:
-**********************************************/
-@import "../../assets/styles/common.scss";
-/* <%= courseName %> */
-/* <%= courseName %> components */
-
-/* End <%= courseName %> components */
-/* End <%= courseName %>*/
+//Settings
+@import "../assets/styles/_common.scss";
+//Generic
+@import "../assets/styles/generic/generic.reset";
+//Components
+$config_animate-mid:400ms;
+@import "~@haztivity/hz-navbar/dist/scss/_hz-navbar.theme-default";
+@import "../assets/styles/components/components.viewer";

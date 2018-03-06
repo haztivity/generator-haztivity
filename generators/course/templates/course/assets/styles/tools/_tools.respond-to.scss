@@ -1,0 +1,24 @@
+//Generate a media query for the given width
+@mixin respond-to($from,$to:null) {
+    @if($to){
+        @media only screen and (min-width: $from and $to){
+            @content;
+        }
+    }@else{
+        @media only screen and (min-width: $from){
+            @content;
+        }
+    }
+}
+//Generate a media query for the given width in rem
+@mixin respond-to-by-rem($from,$to:null) {
+  @if($to){
+    @media only screen and (min-width: rem($from) and rem($to)){
+      @content;
+    }
+  }@else{
+    @media only screen and (min-width: rem($from)){
+      @content;
+    }
+  }
+}

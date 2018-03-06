@@ -1,76 +1,93 @@
 /**
+ * @module generatorHaztivity
+ *//** */
+/**
  * @license
  * Copyright Davinchi. All Rights Reserved.
  */
 'use strict';
-import * as fs from "fs";
 import * as Generator from "yeoman-generator";
-import * as S from "string";
-import * as extend from "extend";
+/**
+ * Base class for the generators
+ */
 export class BaseGenerator extends Generator {
-    protected static readonly ERROR_EMPTY = "This field is required";
+  /**
+   * Common message for required files
+   * @type {string}
+   */
+  protected static readonly ERROR_REQUIRED = "This field is required";
+  /**
+   * Common message for special characters
+   * @type {string}
+   */
     protected static readonly ERROR_SPECIAL_CHARACTER="This field only could contains [a-zA-Z0-9_] characters, without spaces or special characters";
-    protected _yeomanConfigExists;
+  /**
+   * Shared options for all the generators
+   * @type {{}}
+   */
+  protected static options = {};
     constructor(args, opts) {
         super(args, opts);
-        this._S = S;
-        this._extend = extend;
     }
-    protected _saveConfig(data){
-        let storedData = this._getData() ||{};
-        storedData = this._extend(true,{},storedData,data);
-        for(let key in data){
-            this._setData(key,data[key]);
-        }
-        return storedData;
-    }
-    protected _getData(){
-        if(this._checkYeomanConfig()){
-            return this.config.getAll();
-        }else{
-            return this._getTempData();
-        }
-    }
-    protected _checkYeomanConfig(){
-        if(this._yeomanConfigExists == undefined){
-            this._yeomanConfigExists = Object.keys(this.config.getAll()).length !== 0;
-        }
-        return this._yeomanConfigExists;
 
+  /**
+   * Get all the shared options
+   * @returns {{}}
+   * @private
+   */
+    protected _getAllOptions(){
+        return BaseGenerator.options;
     }
-    protected _setData(key,value){
-        this.config.set(key,value);
-        if(!this._checkYeomanConfig()){
-            let data = this._getData();
-            data[key] = value;
-            this._writeTemp(data);
-        }
-    }
-    protected _getTempData(){
-        let content = {};
-        try {
-            content = JSON.parse(fs.readFileSync(".hztemp", {encoding:"utf8"}));
-        }catch(e){
 
-        }
-        return content;
+  /**
+   * Get a shared option
+   * @param key
+   * @returns {any}
+   * @private
+   */
+    protected _getOption(key){
+        return BaseGenerator.options[key];
     }
-    protected _writeTemp(file){
-        file = JSON.stringify(file,null,4);
-        fs.writeFileSync(".hztemp",file);
+
+  /**
+   * Set a shared option
+   * @param key
+   * @param value
+   * @private
+   */
+    protected _setOption(key,value){
+        BaseGenerator.options[key]=value;
     }
+
+  /**
+   * Add properties to the config. The properties will be saved in the .yo-rc file
+   * @param config
+   * @private
+   */
+    protected _addToConfig(config){
+      for(let key in config){
+        this.config.set(key,config[key]);
+      }
+      this.config.save();
+    }
+
+  /**
+   * Validate a field is not null or empty
+   * @param toValidate
+   * @returns {boolean}
+   * @private
+   */
     protected _validateNonEmpty(toValidate) {
         return !!toValidate;
     }
 
+  /**
+   * Validate special characters
+   * @param toValidate
+   * @returns {boolean}
+   * @private
+   */
     protected _validateSpecial(toValidate) {
         return toValidate.search(/[^\w|^-]/g) === -1;
-    }
-    _end(){
-        try {
-            fs.unlinkSync("./hztemp");
-        }catch(e){
-
-        }
     }
 }

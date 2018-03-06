@@ -1,0 +1,24 @@
+//Get the em for pixels. By default uses $config-font-size base. If your element has a different font-size, set your custom context
+//@example em(16);//1em
+//@example em(16,20);//0.8em
+@function em($pixels, $context: $config-font-size-base) {
+    @return #{$pixels/$context}em
+}
+//Get the rem for pixels. By default uses $config-font-size base. If your body has a different font-size, set your custom context
+//@example rem(16);//1rem
+//@example rem(16,20);//0.8rem
+@function rem($pixels, $context: $config-font-size-base) {
+    @return #{$pixels/$context}rem
+}
+
+@mixin clearfix($clear:both) {
+    &:after {
+        content: "";
+        display: block;
+        clear: $clear;
+    }
+}
+
+@function percentaje($elemPixels,$totalPixels) {
+    @return unquote(($elemPixels*100)/$totalPixels+"%")
+}

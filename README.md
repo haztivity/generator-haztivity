@@ -26,9 +26,15 @@ yo haztivity:page              To create a page
  * Yeoman can be too opinionated at times but is easily convinced not to be.
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
+## Debug
+### Windows
+Go to the folder in which to use the generator and execute
+```shell
+node --inspect $env:APPDATA\npm\node_modules\yo\lib\cli.js haztivity
+```
 ## License
 
-ISC © [Davinchi](www.finsi.com)
+MIT © [Davinchi](www.finsi.com)
 
 
 [npm-image]: https://badge.fury.io/js/generator-haztivity.svg
