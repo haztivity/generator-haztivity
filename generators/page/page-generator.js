@@ -12,6 +12,7 @@ const fs = require("fs-extra");
 const chalk = require("chalk");
 const path = require("path");
 const BaseGenerator_1 = require("../BaseGenerator");
+//@ts-ignore
 const esprima = require("esprima");
 const yosay = require("yosay");
 /**
@@ -71,7 +72,7 @@ class PageGenerator extends BaseGenerator_1.BaseGenerator {
                 if (importMark != -1) {
                     //check if the page mark exists
                     if (pageMark != -1) {
-                        const pageToAdd = `page${pageName}`, importToAdd = `import {page as ${pageToAdd}} from "./pages/${pageName}/page;"`;
+                        const pageToAdd = `page${pageName}`, importToAdd = `import {page as ${pageToAdd}} from "./pages/${pageName}/page";`;
                         //add te import
                         scoContent = scoContent.substring(0, importMark) + importToAdd + "\n" + scoContent.substring(importMark);
                         //find the page mark again
@@ -114,6 +115,7 @@ class PageGenerator extends BaseGenerator_1.BaseGenerator {
         }
     }
     prompting() {
+        //@ts-ignore
         let done = this.async(), directories = [];
         if (!this._getOption("generatingAll")) {
             directories = this._getDirectories("course");
@@ -148,7 +150,7 @@ class PageGenerator extends BaseGenerator_1.BaseGenerator {
                 type: "list",
                 name: "scoName",
                 message: `We detected multiple folders in the SCO's directory. In which folder would you like to create the page?`,
-                choices: directories
+                choices: directories,
             });
         }
         this.prompt(prompts).then((answers) => {

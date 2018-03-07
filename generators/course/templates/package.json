@@ -4,7 +4,8 @@
     "description": "<%= courseDescription %>",
     "author": "<%= courseAuthor %>",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start":"node node_modules/@haztivity/cli/bin/hzcli.js"
     },
     "devDependencies": {
       "@haztivity/cli": "^0.x",

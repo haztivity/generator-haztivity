@@ -10,6 +10,7 @@ import * as fs from "fs-extra";
 import * as chalk from "chalk";
 import * as path from "path";
 import {BaseGenerator} from "../BaseGenerator";
+//@ts-ignore
 import * as esprima from "esprima";
 import * as yosay from "yosay";
 
@@ -86,7 +87,7 @@ export class PageGenerator extends BaseGenerator {
         const scoTsPath = this.destinationPath("course", this.config.get("scoName"), "index.ts"),
             pageName = this.config.get("pageName");
         try {
-            let scoContent = fs.readFileSync(scoTsPath, {encoding: "utf-8"});
+            let scoContent:string = (<any>fs.readFileSync(scoTsPath, {encoding: "utf-8"}));
             if (scoContent) {
                 //look for marks
                 let importMark = scoContent.search(/\/\/hz-generator:imports[^\n]+/),
@@ -144,12 +145,13 @@ export class PageGenerator extends BaseGenerator {
     }
 
     prompting() {
+        //@ts-ignore
         let done = this.async(),
             directories = [];
         if (!this._getOption("generatingAll")) {
             directories = this._getDirectories("course");
         }
-        let prompts = [
+        let prompts:any = [
             {
                 type: "input",
                 name: "pageName",
@@ -177,7 +179,7 @@ export class PageGenerator extends BaseGenerator {
                 type: "list",
                 name: "scoName",
                 message: `We detected multiple folders in the SCO's directory. In which folder would you like to create the page?`,
-                choices: directories
+                choices: directories,
             });
         }
         this.prompt(prompts).then(

@@ -1,8 +1,10 @@
 //Settings
 @import "../assets/styles/_common.scss";
 //Generic
-@import "../assets/styles/generic/generic.reset";
+@import "../assets/styles/generic/_generic.reset";
+//Elements
+@import "../assets/styles/elements/_elements.body";
 //Components
 $config_animate-mid:400ms;
 @import "~@haztivity/hz-navbar/dist/scss/_hz-navbar.theme-default";
-@import "../assets/styles/components/components.viewer";
+@import "../assets/styles/components/_components.viewer";

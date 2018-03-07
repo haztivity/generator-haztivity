@@ -8,5 +8,6 @@ test/
 coverage/
 .git/
 **/templates/*.js
+!**/templates/haztivitycli.config.js
 node_modules
 .gitattributes
