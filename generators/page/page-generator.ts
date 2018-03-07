@@ -96,7 +96,7 @@ export class PageGenerator extends BaseGenerator {
                     //check if the page mark exists
                     if (pageMark != -1) {
                         const pageToAdd = `page${pageName}`,
-                            importToAdd = `import {page as ${pageToAdd}} from "./pages/${pageName}/page;"`;
+                            importToAdd = `import {page as ${pageToAdd}} from "./pages/${pageName}/page";`;
                         //add te import
                         scoContent = scoContent.substring(0, importMark) + importToAdd + "\n" + scoContent.substring(
                             importMark);
