@@ -8,8 +8,8 @@
     "generators"
   ],
   "ts:main": "generators/app/index.ts",
-  "types": "generators/index.ts",
-  "typings": "generators/index.ts",
+  "types": "generators",
+  "typings": "generators",
   "main": "generators/app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
