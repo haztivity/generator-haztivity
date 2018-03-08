@@ -22,7 +22,7 @@ class PageGenerator extends BaseGenerator_1.BaseGenerator {
     initializing() {
         //if the generator is invoked without ScoGenerator, check if already exists the required structure
         if (!this._getOption("generatingAll")) {
-            this.log(yosay(`Welcome to ${chalk.red("generator-haztivity")} generator!. I will ask you some questions to generate the structure of an ${chalk.cyan("haztivity page")}. Go ahead!`));
+            this.log(yosay(`Welcome to ${chalk.red("generator-haztivity")} generator!. I'm going to ask you some questions to generate an ${chalk.cyan("haztivity page")}. Go ahead!`));
             const coursesPath = this.destinationPath("course"), courseName = this.config.get("courseName");
             if (fs.existsSync(coursesPath) && courseName) {
                 const directories = this._getDirectories(coursesPath);

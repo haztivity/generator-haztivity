@@ -17,7 +17,7 @@ const yosay = require("yosay");
 class CourseGenerator extends BaseGenerator_1.BaseGenerator {
     initializing() {
         if (!this._getOption("generatingAll")) {
-            this.log(yosay(`Welcome to ${chalk.red("generator-haztivity")} generator!. I will ask you some questions to generate the structure of an ${chalk.cyan("haztivity course")}. Go ahead!`));
+            this.log(yosay(`Welcome to ${chalk.red("generator-haztivity")} generator!. I'm going to ask you some questions to generate the structure of an ${chalk.cyan("haztivity course")}. Go ahead!`));
         }
     }
     prompting() {

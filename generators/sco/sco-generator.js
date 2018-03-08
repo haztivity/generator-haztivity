@@ -19,7 +19,7 @@ class ScoGenerator extends BaseGenerator_1.BaseGenerator {
     initialize() {
         //if the generator is invoked without CourseGenerator, check if already exists the required structure
         if (!this._getOption("generatingAll")) {
-            this.log(yosay(`Welcome to ${chalk.red("generator-haztivity")} generator!. I will ask you some questions to generate the structure of an ${chalk.cyan("haztivity sco")}. Go ahead!`));
+            this.log(yosay(`Welcome to ${chalk.red("generator-haztivity")} generator!. I'm going to ask you some questions to generate an ${chalk.cyan("haztivity sco")}. Go ahead!`));
             //check if the course exists
             const coursesPath = this.destinationPath("course"), courseName = this.config.get("courseName");
             if (!fs.existsSync(coursesPath) || !courseName) {

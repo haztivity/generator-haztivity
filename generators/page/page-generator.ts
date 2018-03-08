@@ -39,7 +39,7 @@ export class PageGenerator extends BaseGenerator {
         if (!this._getOption("generatingAll")) {
             this.log(
                 yosay(
-                    `Welcome to ${chalk.red("generator-haztivity")} generator!. I will ask you some questions to generate the structure of an ${chalk.cyan(
+                    `Welcome to ${chalk.red("generator-haztivity")} generator!. I'm going to ask you some questions to generate an ${chalk.cyan(
                         "haztivity page")}. Go ahead!`
                 )
             );
