@@ -19,6 +19,8 @@ yo haztivity:sco               To create a sco in a course
 yo haztivity:page              To create a page in a sco
 ```
 
+## Docs
+For more info please visit [docs](https://haztivity.github.io/generator-haztivity/), [Yeoman Getting started](http://yeoman.io/learning/) and [Haztivity Guide](http://www.haztivity.com/v0.x/guide/#Yeoman-Generator)
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
