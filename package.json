@@ -1,6 +1,6 @@
 {
   "name": "generator-haztivity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yeoman generator for haztivity projects",
   "homepage": "https://github.com/haztivity/generator-haztivity#readme",
   "author": "Davinchi",
