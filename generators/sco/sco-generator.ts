@@ -5,7 +5,6 @@
  * @license
  * Copyright Davinchi. All Rights Reserved.
  */
-"use strict";
 import * as fs from "fs";
 import * as chalk from "chalk";
 import * as path from "path";

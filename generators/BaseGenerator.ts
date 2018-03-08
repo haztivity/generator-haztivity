@@ -10,7 +10,7 @@ import * as Generator from "yeoman-generator";
 /**
  * Base class for the generators
  */
-export class BaseGenerator extends Generator {
+export abstract class BaseGenerator extends Generator {
   /**
    * Common message for required files
    * @type {string}

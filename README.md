@@ -1,4 +1,4 @@
-# generator-haztivity [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-haztivity
 > Yeoman generator for haztivity projects
 
 ## Installation
@@ -13,10 +13,10 @@ npm install -g generator-haztivity
 Then generate your new project:
 
 ```bash
-yo haztivity                   To create a full project
-yo haztivity:environment       To create the course structure
-yo haztivity:sco               To create a sco
-yo haztivity:page              To create a page
+yo haztivity                   To create a full course with a sco and a page
+yo haztivity:course            To create the structure of a course
+yo haztivity:sco               To create a sco in a course
+yo haztivity:page              To create a page in a sco
 ```
 
 ## Getting To Know Yeoman

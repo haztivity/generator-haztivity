@@ -7,7 +7,16 @@
   "files": [
     "generators"
   ],
+  "ts:main": "generators/app/index.ts",
+  "types": "generators/index.ts",
+  "typings": "generators/index.ts",
   "main": "generators/app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "docs": "rimraf docs & typedoc --mode modules --ignoreCompilerErrors --readme none --exclude **/templates/** --out docs ./generators"
+  },
   "keywords": [
     "haztivity",
     "yeoman-generator"
@@ -24,6 +33,8 @@
     "@types/yosay": "0.0.29",
     "eslint": "^4.18.2",
     "eslint-config-xo-space": "^0.18.0",
+    "typedoc": "^0.11.0",
+    "typedoc-plugin-external-module-name": "^1.1.1",
     "typescript": "^2.7.2",
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0"

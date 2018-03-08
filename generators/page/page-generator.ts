@@ -62,7 +62,7 @@ export class PageGenerator extends BaseGenerator {
      * @returns {string[]}
      * @private
      */
-    _getDirectories(srcpath): string[] {
+    protected _getDirectories(srcpath): string[] {
         let dirs = [];
         try {
             dirs = fs.readdirSync(srcpath)
@@ -79,11 +79,14 @@ export class PageGenerator extends BaseGenerator {
      * @returns {boolean}
      * @private
      */
-    _validatePageExists(page) {
+    protected _validatePageExists(page) {
         return !fs.existsSync(this.destinationPath("course", this.config.get("scoName"), "pages", page));
     }
 
-    _addPageToSco() {
+    /**
+     * Try to add the created page to the sco
+     */
+    protected _addPageToSco() {
         const scoTsPath = this.destinationPath("course", this.config.get("scoName"), "index.ts"),
             pageName = this.config.get("pageName");
         try {
